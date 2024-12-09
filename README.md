@@ -4,8 +4,8 @@ Cara Instalasi
 
 
 Cara seeder akun demo
-php artisan db:migrate
-php artisan db:seed
+1. php artisan migrate
+2. php artisan db:seed
 
 
 AKUN ADMIN ======
