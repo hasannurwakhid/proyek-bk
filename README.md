@@ -1,3 +1,8 @@
+Cara Instalasi
+1. composer install
+2. npm install
+
+
 Cara seeder akun demo
 php artisan db:migrate
 php artisan db:seed
