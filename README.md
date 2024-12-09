@@ -1,4 +1,4 @@
-Cara seeder akun demo \n
+Cara seeder akun demo
 php artisan db:migrate
 php artisan db:seed
 
@@ -13,4 +13,4 @@ password : 12345
 
 AKUN PASIEN ======
 username : pasien1
-password' : 12345
+password : 12345
