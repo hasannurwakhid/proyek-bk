@@ -14,11 +14,11 @@
         <div class="mt-36 max-w-md shadow-md mx-auto p-7 rounded-md">
             <form action="/login-dokter" method="POST">
                 @csrf
-                <label for="username">username</label>
+                <label for="username">Username</label>
                 <input type="text" name="username" id="name"
                     class="p-2 mt-2 mb-5 w-full rounded-md border border-slate-300">
 
-                <label for="password">password</label>
+                <label for="password">Password</label>
                 <input type="text" name="password" id="name"
                     class="p-2 mt-2 mb-5 w-full rounded-md border border-slate-300">
 

@@ -40,6 +40,8 @@ Route::post('/login-pasien', [LoginPasienController::class, 'authenticate']);
 Route::post('/logout-pasien', [LoginPasienController::class, 'logoutPasien']);
 
 Route::get('/dashboard-pasien/daftar-poli', [DashboardPasienController::class, 'daftarPoli']);
+Route::post('/dashboard-pasien/daftar-poli', [DashboardPasienController::class, 'storeDaftarPoli']);
+
 
 Route::get('/getJadwalDokter/{poli}', [JadwalDokterController::class, 'getJadwalByPoli']);
 

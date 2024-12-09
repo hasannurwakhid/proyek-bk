@@ -33,8 +33,7 @@
     </script>
     <div class="w-full mx-auto">
         <div class="max-w-md shadow-md mx-auto p-7 rounded-md">
-            <form action="#" method="POST">
-                @method('put')
+            <form action="/dashboard-pasien/daftar-poli" method="POST">
                 @csrf
                 <label for="no_rm">No Rekam Medis</label>
                 <input disabled type="text" name="no_rm" id="no_rm"

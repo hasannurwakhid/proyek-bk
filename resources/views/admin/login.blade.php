@@ -11,14 +11,15 @@
 
 <body>
     <div class="container mx-auto">
-        <div class="mt-36 max-w-md shadow-md mx-auto p-7 rounded-md">
+        <div class="mt-36 max-w-md border shadow-md mx-auto p-7 rounded-md">
+            <h1 class="mb-6 text-2xl font-bold text-center ">Login Admin</h1>
             <form action="/login-admin" method="POST">
                 @csrf
-                <label for="username">username</label>
+                <label for="username" class="font-semibold">Username</label>
                 <input type="text" name="username" id="name"
                     class="p-2 mt-2 mb-5 w-full rounded-md border border-slate-300">
 
-                <label for="password">password</label>
+                <label for="password" class="font-semibold">Password</label>
                 <input type="text" name="password" id="name"
                     class="p-2 mt-2 mb-5 w-full rounded-md border border-slate-300">
 
