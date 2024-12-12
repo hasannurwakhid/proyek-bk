@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 @section('container')
     <div class="w-full mx-auto">
-        <div class="mt-20 max-w-md shadow-md mx-auto p-7 rounded-md">
+        <div class="mt-20 max-w-md border shadow-md mx-auto p-7 rounded-md">
             <h1 class="mb-6 text-2xl font-bold text-center ">Edit Pasien</h1>
             <form action="/pasien/{{ $pasien->id }}" method="POST">
                 @method('put')

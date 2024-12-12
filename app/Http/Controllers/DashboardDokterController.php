@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DaftarPoli;
+use App\Models\DetailPeriksa;
 use App\Models\Dokter;
 use App\Models\JadwalPeriksa;
+use App\Models\Obat;
+use App\Models\Periksa;
 use App\Models\Poli;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -124,5 +129,116 @@ class DashboardDokterController extends Controller
         $jadwalPeriksa->delete();
         return redirect('/dashboard-dokter/jadwal-periksa')->with('success', 'Jadwal Telah Ditambahkan');
         
+    }
+
+
+    public function memeriksaPasien()
+    {
+        $dokterId = Auth::user()->dokter->id;
+
+        $daftarPolis = DaftarPoli::whereHas('jadwalPeriksa', function ($query) use ($dokterId) {
+            $query->where('id_dokter', $dokterId);
+        })->get();
+        
+        return view('dokter.memeriksaPasien.index', [
+            'daftarPolis' => $daftarPolis
+        ]);
+    }
+
+    public function periksaPasien(DaftarPoli $daftarPoli)
+    {
+        
+        $obats = Obat::all();
+        return view('dokter.memeriksaPasien.periksaPasien', [
+            'obats' => $obats,
+            'daftarPoli' => $daftarPoli
+        ]);
+    }
+
+    public function storePeriksaPasien(Request $request, DaftarPoli $daftarPoli)
+    {
+        $validatedData = $request->validate([
+            'tgl_periksa' => 'required|date',
+            'catatan' => 'nullable|string',
+            'id_obat' => 'required|array',
+            'id_obat.*' => 'exists:obats,id', // Validasi untuk setiap obat yang dipilih
+        ]);
+
+        $totalHargaObat = Obat::whereIn('id', $validatedData['id_obat'])->sum('harga');
+
+        $biayaPeriksa = $totalHargaObat + 150000;
+        
+        $periksa = Periksa::create([
+            'id_daftar_poli' => $daftarPoli->id,
+            'tgl_periksa' => $validatedData['tgl_periksa'],
+            'catatan' => $validatedData['catatan'],
+            'biaya_periksa' => $biayaPeriksa,
+        ]);
+
+        foreach ($validatedData['id_obat'] as $obatId) {
+            DetailPeriksa::create([
+                'id_periksa' => $periksa->id,
+                'id_obat' => $obatId,
+            ]);
+        }
+        
+        return redirect('/dashboard-dokter/memeriksa-pasien')->with('success', 'Data periksa berhasil disimpan.');
+    }
+    public function editPeriksaPasien(Request $request, Periksa $periksa)
+    {
+        $obats = Obat::all();
+        return view('dokter.memeriksaPasien.editPeriksaPasien', [
+            'periksa' => $periksa,
+            'detailPeriksas' => $periksa->detailPeriksa,
+            'obats' => $obats
+        ]);
+    }
+    public function storeEditPeriksaPasien(Request $request, Periksa $periksa)
+    {
+       $validatedData = $request->validate([
+            'tgl_periksa' => 'required|date',
+            'catatan' => 'nullable|string',
+            'id_obat' => 'required|array',
+            'id_obat.*' => 'exists:obats,id',
+        ]);
+        $totalHargaObat = Obat::whereIn('id', $validatedData['id_obat'])->sum('harga');
+        $biayaPeriksa = $totalHargaObat + 150000;
+
+        DetailPeriksa::where('id_periksa',$periksa->id)->forceDelete();
+        $periksa->update([
+            'tgl_periksa' => $validatedData['tgl_periksa'],
+            'catatan' => $validatedData['catatan'],
+            'biaya_periksa' => $biayaPeriksa,
+        ]);
+        foreach ($validatedData['id_obat'] as $obatId) {
+            DetailPeriksa::create([
+                'id_periksa' => $periksa->id,
+                'id_obat' => $obatId,
+            ]);
+        }
+        return redirect('/dashboard-dokter/memeriksa-pasien')->with('success', 'Data periksa berhasil diupdate.');
+    }
+    public function riwayatPasien(Request $request, Periksa $periksa)
+    {
+        // Ambil data dokter yang login
+        $dokter = Auth::user()->dokter; // Pastikan relasi antara `users` dan `dokters` sudah terdefinisi.
+
+        // Ambil riwayat pasien berdasarkan dokter
+        $riwayatPasien = Periksa::whereHas('daftarPoli.jadwalPeriksa', function ($query) use ($dokter) {
+            $query->where('id_dokter', $dokter->id);
+        })
+        ->orderBy('tgl_periksa', 'desc') // Urutkan berdasarkan tanggal
+        ->get();
+
+        // Kembalikan data ke view
+        return view('dokter.riwayatPasien.index', [
+            'riwayatPasien' => $riwayatPasien,
+        ]);
+    }
+    public function riwayatPasienDetail(Periksa $periksa)
+    {
+        return view('dokter.riwayatPasien.riwayatPasienDetail', [
+            'riwayatPasien' => $periksa,
+        ]);
     }
 }

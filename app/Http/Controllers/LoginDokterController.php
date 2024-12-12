@@ -10,7 +10,9 @@ class LoginDokterController extends Controller
     //
     public function index()
     {
-
+        if(Auth::user()){
+            return redirect()->intended('/dashboard-dokter/jadwal-periksa');
+        }
         return view('dokter.login', [
             
         ]);

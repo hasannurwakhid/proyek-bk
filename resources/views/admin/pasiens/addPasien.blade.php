@@ -61,7 +61,7 @@
                     @enderror
                 </div>
 
-                <div class="mb-2">
+                <div class="mb-10">
                     <label class="font-semibold" for="no_hp">No HP</label>
                     <input type="text" name="no_hp" id="no_hp"
                         class="p-2  w-full rounded-md border border-slate-300">
@@ -72,7 +72,7 @@
                     @enderror
                 </div>
 
-                <div class="mb-10">
+                {{-- <div class="mb-10">
                     <label class="font-semibold" for="no_rm">No RM</label>
                     <input type="text" name="no_rm" id="no_rm"
                         class="p-2  w-full rounded-md border border-slate-300">
@@ -81,7 +81,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-                </div>
+                </div> --}}
 
                 <button type="submit" class="w-full border p-2 rounded-md bg-green-700 hover:opacity-90 text-white">Tambah
                 </button>

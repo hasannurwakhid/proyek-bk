@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>Selamat Datang di Sistem Kesehatan</title>
+    <title>Selamat Datang di HNW's Care</title>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
     <!-- Header -->
     <header class="bg-slate-900 text-white py-5 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">Sistem Kesehatan</h1>
+            <h1 class="text-xl font-bold">HNW's Care</h1>
             <nav>
                 <ul class="flex space-x-6">
                     <li><a href="#tentang" class="hover:underline">Tentang</a></li>
@@ -27,7 +27,7 @@
     <!-- Hero Section -->
     <section class="bg-slate-900 text-white py-20">
         <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-5">Selamat Datang di Sistem Kesehatan</h2>
+            <h2 class="text-4xl font-bold mb-5">Selamat Datang di HNW's Care</h2>
             <p class="mb-8 text-lg">Kelola interaksi dokter dan pasien dengan sistem yang terintegrasi dan mudah.</p>
             <a href="#login" class="bg-green-500 text-white px-6 py-3 rounded-md text-lg shadow-md hover:bg-green-600">
                 Mulai Sekarang
@@ -60,7 +60,7 @@
             <h2 class="text-3xl font-bold mb-5">Tentang Kami</h2>
             <p class="max-w-2xl mx-auto">Kami bertujuan untuk menyediakan koneksi yang mulus antara dokter dan pasien.
                 Dengan fitur penjadwalan dan pengelolaan data yang canggih, kami membantu tenaga kesehatan untuk fokus
-                pada hal yang paling penting: kesehatan pasien mereka.</p>
+                pada kesehatan pasien.</p>
         </div>
     </section>
 
@@ -89,8 +89,8 @@
     <footer id="kontak" class="bg-slate-900 text-white py-10">
         <div class="container mx-auto text-center">
             <p class="mb-3">Hubungi kami di: <a href="mailto:info@sistemkesehatan.com"
-                    class="underline">info@sistemkesehatan.com</a></p>
-            <p>&copy; 2024 Sistem Kesehatan. Hak cipta dilindungi.</p>
+                    class="underline">info@hnwcare.com</a></p>
+            <p>&copy; 2024 HNW's Care. Hak cipta dilindungi.</p>
         </div>
     </footer>
 </body>

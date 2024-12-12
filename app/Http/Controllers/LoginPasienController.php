@@ -13,6 +13,9 @@ class LoginPasienController extends Controller
     //
     public function index()
     {
+        if(Auth::user()){
+            return redirect()->intended('/dashboard-pasien/daftar-poli');
+        }
         return view('pasien.login', [
             
         ]);
@@ -35,7 +38,8 @@ class LoginPasienController extends Controller
             'no_hp' => 'required|max:255',
         ]);
 
-        $lastPasien = Pasien::latest('id')->first();
+        $lastPasien = Pasien::withTrashed()->latest('id')->first();
+
         $urut = $lastPasien ? $lastPasien->id + 1 : 1;
 
         $year = date('Y');

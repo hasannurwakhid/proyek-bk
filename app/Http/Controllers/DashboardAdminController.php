@@ -156,9 +156,18 @@ class DashboardAdminController extends Controller
             'alamat' => 'required|max:255',
             'no_ktp' => 'required|max:255',
             'no_hp' => 'required|max:255',
-            'no_rm' => 'required|max:255',
+            // 'no_rm' => 'required|max:255',
         ]);
 
+        $lastPasien = Pasien::withTrashed()->latest('id')->first();
+
+        $urut = $lastPasien ? $lastPasien->id + 1 : 1;
+
+        $year = date('Y');
+        $month = date('m');
+
+        $validatedData['no_rm'] = "{$year}{$month}-{$urut}";
+        
         $user = User::create([
             'username' => $validatedData['username'],
             'password' => Hash::make($validatedData['password']),

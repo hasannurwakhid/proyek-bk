@@ -8,6 +8,8 @@ use App\Http\Controllers\JadwalDokterController;
 use App\Http\Controllers\LoginDokterController;
 use App\Http\Controllers\LoginPasienController;
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\Dokter;
+use App\Http\Middleware\Pasien;
 use App\Models\JadwalPeriksa;
 use Illuminate\Support\Facades\Route;
 
@@ -21,15 +23,26 @@ Route::get('/login-dokter', [LoginDokterController::class, 'index']);
 Route::post('/login-dokter', [LoginDokterController::class, 'authenticate']);
 Route::post('/logout-dokter', [LoginDokterController::class, 'logoutDokter']);
 
-Route::get('/dashboard-dokter/profil', [DashboardDokterController::class, 'profil']);
-Route::put('/dashboard-dokter/profil/{dokter}', [DashboardDokterController::class, 'storeProfil']);
+Route::get('/dashboard-dokter/profil', [DashboardDokterController::class, 'profil'])->middleware(Dokter::class);
+Route::put('/dashboard-dokter/profil/{dokter}', [DashboardDokterController::class, 'storeProfil'])->middleware(Dokter::class);
 
-Route::get('/dashboard-dokter/jadwal-periksa', [DashboardDokterController::class, 'jadwalPeriksa']);
-Route::get('/dashboard-dokter/jadwal-periksa/tambah', [DashboardDokterController::class, 'addJadwalPeriksa']);
-Route::post('/dashboard-dokter/jadwal-periksa/tambah', [DashboardDokterController::class, 'storeAddJadwalPeriksa']);
-Route::get('/dashboard-dokter/jadwal-periksa/{jadwalPeriksa}/edit', [DashboardDokterController::class, 'editJadwalPeriksa']);
-Route::put('/dashboard-dokter/jadwal-periksa/{jadwalPeriksa}/edit', [DashboardDokterController::class, 'storeEditJadwalPeriksa']);
-Route::delete('/dashboard-dokter/jadwal-periksa/{jadwalPeriksa}/hapus', [DashboardDokterController::class, 'deleteJadwalPeriksa']);
+Route::get('/dashboard-dokter/jadwal-periksa', [DashboardDokterController::class, 'jadwalPeriksa'])->middleware(Dokter::class);
+Route::get('/dashboard-dokter/jadwal-periksa/tambah', [DashboardDokterController::class, 'addJadwalPeriksa'])->middleware(Dokter::class);
+Route::post('/dashboard-dokter/jadwal-periksa/tambah', [DashboardDokterController::class, 'storeAddJadwalPeriksa'])->middleware(Dokter::class);
+Route::get('/dashboard-dokter/jadwal-periksa/{jadwalPeriksa}/edit', [DashboardDokterController::class, 'editJadwalPeriksa'])->middleware(Dokter::class);
+Route::put('/dashboard-dokter/jadwal-periksa/{jadwalPeriksa}/edit', [DashboardDokterController::class, 'storeEditJadwalPeriksa'])->middleware(Dokter::class);
+Route::delete('/dashboard-dokter/jadwal-periksa/{jadwalPeriksa}/hapus', [DashboardDokterController::class, 'deleteJadwalPeriksa'])->middleware(Dokter::class);
+
+Route::get('/dashboard-dokter/memeriksa-pasien', [DashboardDokterController::class, 'memeriksaPasien'])->middleware(Dokter::class);
+Route::get('/dashboard-dokter/memeriksa-pasien/{daftarPoli}', [DashboardDokterController::class, 'periksaPasien'])->middleware(Dokter::class);
+Route::post('/dashboard-dokter/memeriksa-pasien/{daftarPoli}', [DashboardDokterController::class, 'storePeriksaPasien'])->middleware(Dokter::class);
+Route::get('/dashboard-dokter/memeriksa-pasien/{periksa}/edit', [DashboardDokterController::class, 'editPeriksaPasien'])->middleware(Dokter::class);
+Route::put('/dashboard-dokter/memeriksa-pasien/{periksa}/edit', [DashboardDokterController::class, 'storeEditPeriksaPasien'])->middleware(Dokter::class);
+
+Route::get('/dashboard-dokter/riwayat-pasien', [DashboardDokterController::class, 'riwayatPasien'])->middleware(Dokter::class);
+Route::get('/dashboard-dokter/riwayat-pasien/{periksa}', [DashboardDokterController::class, 'riwayatPasienDetail'])->middleware(Dokter::class);
+
+
 
 //======================pasien
 
@@ -39,8 +52,8 @@ Route::get('/login-pasien', [LoginPasienController::class, 'index']);
 Route::post('/login-pasien', [LoginPasienController::class, 'authenticate']);
 Route::post('/logout-pasien', [LoginPasienController::class, 'logoutPasien']);
 
-Route::get('/dashboard-pasien/daftar-poli', [DashboardPasienController::class, 'daftarPoli']);
-Route::post('/dashboard-pasien/daftar-poli', [DashboardPasienController::class, 'storeDaftarPoli']);
+Route::get('/dashboard-pasien/daftar-poli', [DashboardPasienController::class, 'daftarPoli'])->middleware(Pasien::class);
+Route::post('/dashboard-pasien/daftar-poli', [DashboardPasienController::class, 'storeDaftarPoli'])->middleware(Pasien::class);
 
 
 Route::get('/getJadwalDokter/{poli}', [JadwalDokterController::class, 'getJadwalByPoli']);
