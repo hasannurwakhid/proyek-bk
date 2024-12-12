@@ -18,11 +18,6 @@ class DashboardPasienController extends Controller
         ]);
     }
     public function storeDaftarPoli(Request $request){
-        
-        
-
-        
-
         $validatedData = $request->validate([
             'id_jadwal' => 'required|exists:jadwal_periksas,id', 
             'keluhan' => 'required|string|max:255',
@@ -49,5 +44,16 @@ class DashboardPasienController extends Controller
             return back()->withErrors(['error' => 'Terjadi kesalahan saat mendaftar. Silakan coba lagi.']);
         }
     }   
-    
+    public function riwayatPoli(){
+        $user = Auth::user();
+        $daftarPolis = DaftarPoli::where('id_pasien', $user->pasien->id)->get();
+        return view('pasien.riwayatPoli.index', [
+            'daftarPolis'=>$daftarPolis
+        ]);
+    }
+    public function detailRiwayatPoli(DaftarPoli $daftarPoli){
+        return view('pasien.riwayatPoli.detailRiwayatPoli', [
+            'daftarPoli'=>$daftarPoli
+        ]);
+    }
 }

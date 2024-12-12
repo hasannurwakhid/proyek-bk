@@ -31,7 +31,7 @@ class LoginDokterController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
             if (Auth::user()->role=="dokter") {
-                return redirect()->intended('/dashboard-dokter/profil');
+                return redirect()->intended('/dashboard-dokter/jadwal-periksa');
                 // dd(Auth::user()->username);
                 // dd("Login Dokter Berhasil");
             } else {

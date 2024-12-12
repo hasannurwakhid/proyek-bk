@@ -54,9 +54,11 @@ Route::post('/logout-pasien', [LoginPasienController::class, 'logoutPasien']);
 
 Route::get('/dashboard-pasien/daftar-poli', [DashboardPasienController::class, 'daftarPoli'])->middleware(Pasien::class);
 Route::post('/dashboard-pasien/daftar-poli', [DashboardPasienController::class, 'storeDaftarPoli'])->middleware(Pasien::class);
-
-
 Route::get('/getJadwalDokter/{poli}', [JadwalDokterController::class, 'getJadwalByPoli']);
+
+Route::get('/dashboard-pasien/riwayat-poli', [DashboardPasienController::class, 'riwayatPoli'])->middleware(Pasien::class);
+Route::get('/dashboard-pasien/riwayat-poli/{daftarPoli}', [DashboardPasienController::class, 'detailRiwayatPoli'])->middleware(Pasien::class);
+
 
 //======================admin
 
