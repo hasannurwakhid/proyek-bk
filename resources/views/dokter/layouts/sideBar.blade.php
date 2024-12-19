@@ -5,7 +5,8 @@
     <h1 class="text-2xl font-bold mb-5">Dashboard Dokter</h1>
     <nav>
         <ul>
-            <li class="mb-3 hover:bg-slate-700 rounded-md">
+            <li
+                class="mb-3 hover:bg-slate-700 rounded-md {{ Request::is('dashboard-dokter/jadwal-periksa*') ? 'bg-slate-700' : '' }}">
                 <a href="/dashboard-dokter/jadwal-periksa" class="p-2 flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current mr-2"
                         viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -15,7 +16,8 @@
                     Jadwal Periksa
                 </a>
             </li>
-            <li class="mb-3 hover:bg-slate-700 rounded-md">
+            <li
+                class="mb-3 hover:bg-slate-700 rounded-md {{ Request::is('dashboard-dokter/memeriksa-pasien*') ? 'bg-slate-700' : '' }}">
                 <a href="/dashboard-dokter/memeriksa-pasien" class="flex items-center p-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current mr-2"
                         viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -25,7 +27,8 @@
                     Memeriksa Pasien
                 </a>
             </li>
-            <li class="mb-3 hover:bg-slate-700 rounded-md">
+            <li
+                class="mb-3 hover:bg-slate-700 rounded-md {{ Request::is('dashboard-dokter/riwayat-pasien*') ? 'bg-slate-700' : '' }}">
                 <a href="/dashboard-dokter/riwayat-pasien" class="flex items-center p-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current mr-2"
                         viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -35,7 +38,7 @@
                     Riwayat Pasien
                 </a>
             </li>
-            <li class="mb-3 hover:bg-slate-700 rounded-md">
+            <li class="mb-3 hover:bg-slate-700 rounded-md {{ Request::is('dashboard-dokter/profil*') ? 'bg-slate-700' : '' }}">
                 <a href="/dashboard-dokter/profil" class="flex items-center p-2 ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current mr-2"
                         viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->

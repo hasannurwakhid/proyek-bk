@@ -27,13 +27,13 @@
                 <tbody>
                     @foreach ($polis as $poli)
                         <tr>
-                            <td class="border border-gray-300 p-2">{{ $poli->id }}</td>
-                            <td class="border border-gray-300 p-2">{{ $poli->nama_poli }}</td>
-                            <td class="border border-gray-300 p-2">{{ $poli->keterangan }}</td>
+                            <td class="border border-gray-300 p-2">{{ $poli?->id }}</td>
+                            <td class="border border-gray-300 p-2">{{ $poli?->nama_poli }}</td>
+                            <td class="border border-gray-300 p-2">{{ $poli?->keterangan }}</td>
 
                             <td class="border border-gray-300 p-2">
                                 <div class="flex justify-center items-center gap-2">
-                                    <a href="/poli/{{ $poli->id }}/edit">
+                                    <a href="/poli/{{ $poli?->id }}/edit">
                                         <button
                                             class="flex items-center bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600"><svg
                                                 xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current mr-2"
@@ -43,7 +43,7 @@
                                             </svg>Edit</button>
                                     </a>
 
-                                    <form action="/poli/{{ $poli->id }}" method="POST">
+                                    <form action="/poli/{{ $poli?->id }}" method="POST">
                                         @method('delete')
                                         @csrf
                                         <button type="submit"

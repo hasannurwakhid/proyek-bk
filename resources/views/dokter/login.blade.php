@@ -59,7 +59,7 @@
 
                 <div class="mb-10">
                     <label class="font-semibold" for="password">Password</label>
-                    <input type="text" name="password" id="name"
+                    <input type="password" name="password" id="name"
                         class="p-2 w-full rounded-md border border-slate-300">
                     @error('password')
                         <div class="mb-3 text-red-600">

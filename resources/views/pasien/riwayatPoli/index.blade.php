@@ -22,16 +22,16 @@
                         <tr>
                             <td class="border border-gray-300 p-2 text-center">{{ $index + 1 }}</td>
                             <td class="border border-gray-300 p-2 text-center">
-                                {{ $daftarPoli->jadwalPeriksa->dokter->poli->nama_poli }}
+                                {{ $daftarPoli?->jadwalPeriksa?->dokter?->poli?->nama_poli }}
                             </td>
                             <td class="border border-gray-300 p-2 text-center">
-                                {{ $daftarPoli->jadwalPeriksa->dokter->nama }}</td>
-                            <td class="border border-gray-300 p-2 text-center">{{ $daftarPoli->jadwalPeriksa->hari }}</td>
-                            <td class="border border-gray-300 p-2 text-center">{{ $daftarPoli->jadwalPeriksa->jam_mulai }}
+                                {{ $daftarPoli?->jadwalPeriksa?->dokter?->nama }}</td>
+                            <td class="border border-gray-300 p-2 text-center">{{ $daftarPoli?->jadwalPeriksa?->hari }}</td>
+                            <td class="border border-gray-300 p-2 text-center">{{ $daftarPoli->jadwalPeriksa?->jam_mulai }}
                             </td>
-                            <td class="border border-gray-300 p-2 text-center">{{ $daftarPoli->jadwalPeriksa->jam_selesai }}
+                            <td class="border border-gray-300 p-2 text-center">{{ $daftarPoli?->jadwalPeriksa?->jam_selesai }}
                             </td>
-                            <td class="border border-gray-300 p-2 text-center">{{ $daftarPoli->no_antrian }}</td>
+                            <td class="border border-gray-300 p-2 text-center">{{ $daftarPoli?->no_antrian }}</td>
                             <td class="border border-gray-300 p-2 flex justify-center items-center">
                                 @if ($daftarPoli->periksa)
                                     <div class="text-center rounded-md p-1 w-1/2 text-white bg-green-700">
@@ -45,9 +45,9 @@
                             </td>
                             <td class="border border-gray-300 p-2">
                                 <div class="flex justify-center items-center gap-2">
-                                    @if ($daftarPoli->periksa)
+                                    @if ($daftarPoli?->periksa)
                                         <!-- Tombol Edit -->
-                                        <a href="/dashboard-pasien/riwayat-poli/{{ $daftarPoli->id }}">
+                                        <a href="/dashboard-pasien/riwayat-poli/{{ $daftarPoli?->id }}">
                                             <button
                                                 class="flex items-center bg-green-700 text-white px-3 py-1 rounded-md hover:bg-green-900">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20"

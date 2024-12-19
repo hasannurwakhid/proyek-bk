@@ -5,7 +5,8 @@
     <h1 class="text-2xl font-bold mb-5">Dashboard Pasien</h1>
     <nav>
         <ul>
-            <li class="mb-3 hover:bg-slate-700 rounded-md">
+            <li
+                class="mb-3 hover:bg-slate-700 rounded-md {{ Request::is('dashboard-pasien/daftar-poli*') ? 'bg-slate-700' : '' }}">
                 <a href="/dashboard-pasien/daftar-poli" class="p-2 flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current mr-2" viewBox="0 0 448 512">
                         <path
@@ -16,7 +17,8 @@
                     Daftar Ke Poli
                 </a>
             </li>
-            <li class="mb-3 hover:bg-slate-700 rounded-md">
+            <li
+                class="mb-3 hover:bg-slate-700 rounded-md {{ Request::is('dashboard-pasien/riwayat-poli*') ? 'bg-slate-700' : '' }}">
                 <a href="/dashboard-pasien/riwayat-poli" class="flex items-center p-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current mr-2"
                         viewBox="0 0 512 512">

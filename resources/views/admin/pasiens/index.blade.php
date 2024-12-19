@@ -30,12 +30,12 @@
                     @foreach ($pasiens as $pasien)
                         <tr>
 
-                            <td class="border border-gray-300 p-2">{{ $pasien->id }}</td>
-                            <td class="border border-gray-300 p-2">{{ $pasien->nama }}</td>
-                            <td class="border border-gray-300 p-2">{{ $pasien->alamat }}</td>
-                            <td class="border border-gray-300 p-2">{{ $pasien->no_ktp }}</td>
-                            <td class="border border-gray-300 p-2">{{ $pasien->no_hp }}</td>
-                            <td class="border border-gray-300 p-2">{{ $pasien->no_rm }}</td>
+                            <td class="border border-gray-300 p-2">{{ $pasien?->id }}</td>
+                            <td class="border border-gray-300 p-2">{{ $pasien?->nama }}</td>
+                            <td class="border border-gray-300 p-2">{{ $pasien?->alamat }}</td>
+                            <td class="border border-gray-300 p-2">{{ $pasien?->no_ktp }}</td>
+                            <td class="border border-gray-300 p-2">{{ $pasien?->no_hp }}</td>
+                            <td class="border border-gray-300 p-2">{{ $pasien?->no_rm }}</td>
                             <td class="border border-gray-300 p-2">
                                 <div class="flex justify-center items-center gap-2">
                                     <a href="/pasien/{{ $pasien->id }}/edit">
@@ -50,7 +50,7 @@
 
                                         </button>
                                     </a>
-                                    <form action="/pasien/{{ $pasien->id }}" method="POST">
+                                    <form action="/pasien/{{ $pasien?->id }}" method="POST">
                                         @method('delete')
                                         @csrf
                                         <button type="submit"

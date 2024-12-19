@@ -30,14 +30,14 @@
                 <tbody>
                     @foreach ($dokters as $dokter)
                         <tr>
-                            <td class="border border-gray-300 p-2">{{ $dokter->id }}</td>
-                            <td class="border border-gray-300 p-2">{{ $dokter->nama }}</td>
-                            <td class="border border-gray-300 p-2">{{ $dokter->alamat }}</td>
-                            <td class="border border-gray-300 p-2">{{ $dokter->no_hp }}</td>
-                            <td class="border border-gray-300 p-2">{{ $dokter->poli->nama_poli }}</td>
+                            <td class="border border-gray-300 p-2">{{ $dokter?->id }}</td>
+                            <td class="border border-gray-300 p-2">{{ $dokter?->nama }}</td>
+                            <td class="border border-gray-300 p-2">{{ $dokter?->alamat }}</td>
+                            <td class="border border-gray-300 p-2">{{ $dokter?->no_hp }}</td>
+                            <td class="border border-gray-300 p-2">{{ $dokter?->poli?->nama_poli }}</td>
                             <td class="border border-gray-300 p-2 text-center">
                                 <div class="flex justify-center items-center gap-2">
-                                    <a href="/dokter/{{ $dokter->id }}/edit">
+                                    <a href="/dokter/{{ $dokter?->id }}/edit">
                                         <button
                                             class="flex items-center bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current mr-2"
@@ -48,7 +48,7 @@
                                             Edit
                                         </button>
                                     </a>
-                                    <form action="/dokter/{{ $dokter->id }}" method="POST">
+                                    <form action="/dokter/{{ $dokter?->id }}" method="POST">
                                         @method('delete')
                                         @csrf
                                         <button type="submit"

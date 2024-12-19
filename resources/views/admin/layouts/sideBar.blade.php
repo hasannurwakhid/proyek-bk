@@ -5,7 +5,8 @@
     <h1 class="text-2xl font-bold mb-5">Admin Dashboard</h1>
     <nav>
         <ul>
-            <li class="mb-3 hover:bg-slate-700 rounded-md">
+            <li
+                class="mb-3 hover:bg-slate-700 rounded-md {{ Request::is('dashboard-admin/kelola-dokter') || Request::is('dokter*') ? 'bg-slate-700' : '' }}">
                 <a href="/dashboard-admin/kelola-dokter" class="p-2 flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current mr-2"
                         viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -15,8 +16,9 @@
                     Mengelola Dokter
                 </a>
             </li>
-            <li class="mb-3 hover:bg-slate-700 rounded-md">
-                <a href="/dashboard-admin/kelola-pasien" class="flex items-center p-2">
+            <li class="mb-3 hover:bg-slate-700 rounded-md {{ Request::is('dashboard-admin/kelola-pasien') || Request::is('pasien*') ? 'bg-slate-700' : '' }}">
+                <a href="/dashboard-admin/kelola-pasien"
+                    class="flex items-center p-2 ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current mr-2"
                         viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path
@@ -25,8 +27,9 @@
                     Mengelola Pasien
                 </a>
             </li>
-            <li class="mb-3 hover:bg-slate-700 rounded-md">
-                <a href="/dashboard-admin/kelola-poli" class="flex items-center p-2">
+            <li class="mb-3 hover:bg-slate-700 rounded-md {{ Request::is('dashboard-admin/kelola-poli') || Request::is('poli*') ? 'bg-slate-700' : '' }}">
+                <a href="/dashboard-admin/kelola-poli"
+                    class="flex items-center p-2 ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" class="fill-current mr-2"
                         viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path
@@ -35,7 +38,8 @@
                     Mengelola Poli
                 </a>
             </li>
-            <li class="mb-3 hover:bg-slate-700 rounded-md">
+            <li
+                class="mb-3 hover:bg-slate-700 rounded-md {{ Request::is('dashboard-admin/kelola-obat') || Request::is('obat*') ? 'bg-slate-700' : '' }}">
                 <a href="/dashboard-admin/kelola-obat" class="flex items-center p-2 ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="fill-current mr-2" width="20"
                         viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->

@@ -11,7 +11,7 @@
                     <label class="font-semibold" for="nama_obat">Nama Obat</label>
                     <input type="text" name="nama_obat" id="nama_obat"
                         class="p-2 w-full rounded-md border border-slate-300"
-                        value="{{ old('nama_obat', $obat->nama_obat) }}">
+                        value="{{ old('nama_obat', $obat?->nama_obat) }}">
                     @error('nama_obat')
                         <div class="mb-3 text-red-600">
                             {{ $message }}
@@ -22,7 +22,7 @@
                 <div class="mb-2">
                     <label class="font-semibold" for="kemasan">Kemasan</label>
                     <input type="text" name="kemasan" id="kemasan"
-                        class="p-2 w-full rounded-md border border-slate-300" value="{{ old('kemasan', $obat->kemasan) }}">
+                        class="p-2 w-full rounded-md border border-slate-300" value="{{ old('kemasan', $obat?->kemasan) }}">
                     @error('kemasan')
                         <div class="mb-3 text-red-600">
                             {{ $message }}
@@ -33,7 +33,7 @@
                 <div class="mb-10">
                     <label class="font-semibold" for="harga">Harga</label>
                     <input type="text" name="harga" id="harga"
-                        class="p-2 w-full rounded-md border border-slate-300" value="{{ old('harga', $obat->harga) }}">
+                        class="p-2 w-full rounded-md border border-slate-300" value="{{ old('harga', $obat?->harga) }}">
                     @error('harga')
                         <div class="mb-3 text-red-600">
                             {{ $message }}

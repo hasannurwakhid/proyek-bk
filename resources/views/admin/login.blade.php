@@ -49,7 +49,7 @@
                     class="p-2 mt-2 mb-5 w-full rounded-md border border-slate-300">
 
                 <label for="password" class="font-semibold">Password</label>
-                <input type="text" name="password" id="name"
+                <input type="password" name="password" id="name"
                     class="p-2 mt-2 mb-5 w-full rounded-md border border-slate-300">
 
                 <button type="submit"
