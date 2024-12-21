@@ -1,7 +1,7 @@
 @extends('dokter.layouts.main')
 @section('container')
-    <div class="w-full mx-auto">
-        <div class="mt-36 max-w-md border shadow-md mx-auto p-7 rounded-md">
+    <div class="w-full p-5">
+        <div class="my-10 max-w-md border shadow-md mx-auto p-7 rounded-md">
             <h1 class="mb-6 text-2xl font-bold text-center ">Edit Jadwal</h1>
             <form action="/dashboard-dokter/jadwal-periksa/{{ $jadwalPeriksa->id }}/edit" method="POST">
                 @method('put')

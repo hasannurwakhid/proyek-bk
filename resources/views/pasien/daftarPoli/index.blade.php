@@ -1,7 +1,7 @@
 @extends('pasien.layouts.main')
 @section('container')
-    <div class="w-full">
-        <div class="max-w-md border shadow-md mx-auto my-8 p-7 rounded-md">
+    <div class="w-full p-5">
+        <div class="max-w-md border shadow-md mx-auto my-10 p-7 rounded-md">
             <form action="/dashboard-pasien/daftar-poli" method="POST">
                 @csrf
 

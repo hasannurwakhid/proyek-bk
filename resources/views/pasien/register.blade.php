@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <div class="w-full mx-auto">
-        <div class="mt-20 max-w-md border shadow-md mx-auto p-7 rounded-md">
+    <div class="w-full p-5 mx-auto">
+        <div class="my-10 max-w-md border shadow-md mx-auto p-7 rounded-md">
             <h1 class="mb-6 text-2xl font-bold text-center ">Register Pasien</h1>
             <form action="/register-pasien" method="POST" class="mb-5">
                 @csrf

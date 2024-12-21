@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>Selamat Datang di HNW's Care</title>
+    <title>HNW's Care</title>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
     <!-- Header -->
     <header class="bg-slate-900 text-white py-5 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
+        <div class="container mx-auto flex justify-between items-center p-5 md:p-0">
             <h1 class="text-xl font-bold">HNW's Care</h1>
             <nav>
                 <ul class="flex space-x-6">
@@ -26,7 +26,7 @@
 
     <!-- Hero Section -->
     <section class="bg-slate-900 text-white py-20">
-        <div class="container mx-auto text-center">
+        <div class="container mx-auto text-center p-5">
             <h2 class="text-4xl font-bold mb-5">Selamat Datang di HNW's Care</h2>
             <p class="mb-8 text-lg">Kelola interaksi dokter dan pasien dengan sistem yang terintegrasi dan mudah.</p>
             <a href="#login" class="bg-green-500 text-white px-6 py-3 rounded-md text-lg shadow-md hover:bg-green-600">

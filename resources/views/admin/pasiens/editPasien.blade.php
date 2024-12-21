@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 @section('container')
-    <div class="w-full mx-auto">
-        <div class="mt-20 max-w-md border shadow-md mx-auto p-7 rounded-md">
+    <div class="w-full p-5">
+        <div class="my-10 max-w-md border shadow-md mx-auto p-7 rounded-md">
             <h1 class="mb-6 text-2xl font-bold text-center ">Edit Pasien</h1>
             <form action="/pasien/{{ $pasien?->id }}" method="POST">
                 @method('put')
@@ -42,7 +42,8 @@
                 <div class="mb-2">
                     <label class="font-semibold" for="alamat">Alamat</label>
                     <input type="text" name="alamat" id="alamat"
-                        class="p-2  w-full rounded-md border border-slate-300" value="{{ old('alamat', $pasien?->alamat) }}">
+                        class="p-2  w-full rounded-md border border-slate-300"
+                        value="{{ old('alamat', $pasien?->alamat) }}">
                     @error('alamat')
                         <div class="mb-3 text-red-600">
                             {{ $message }}

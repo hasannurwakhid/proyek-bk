@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <div class="container mx-auto">
-        <div class="mt-36 max-w-md border shadow-md mx-auto p-7 rounded-md">
+    <div class="container mx-auto p-5">
+        <div class="my-10 max-w-md border shadow-md mx-auto p-7 rounded-md">
             @if (session()->has('success'))
                 <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
                     role="alert">
