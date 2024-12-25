@@ -61,7 +61,6 @@
             const jadwalSelect = document.getElementById('id_jadwal');
 
             poliElement.addEventListener('change', function() {
-                console.log("halo");
                 const poliId = this.value;
 
                 // Clear previous options
