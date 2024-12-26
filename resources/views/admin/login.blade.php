@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- tes -->
     <div class="container mx-auto p-5">
         <div class="my-10 max-w-md border shadow-md mx-auto p-7 rounded-md">
             @if (session()->has('success'))
