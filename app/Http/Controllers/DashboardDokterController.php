@@ -87,6 +87,29 @@ class DashboardDokterController extends Controller
                 }
         }
 
+        // $jadwalHariSama = JadwalPeriksa::where('id_dokter', $validatedData['id_dokter'])
+        //     ->where('hari', $validatedData['hari'])
+        //     ->exists();
+
+        // if ($jadwalHariSama) {
+        //     return back()->withErrors(['isAktif' => 'Tidak bisa menambahkan jadwal ini karena sudah ada jadwal lain dengan hari yang sama.']);
+        // }
+        
+
+        // $poliDokter = Auth::user()->dokter->id_poli;
+        
+        // $dokterSama = JadwalPeriksa::whereHas('dokter', function ($query) use ($poliDokter) {
+        //     $query->where('id_poli', $poliDokter);
+        // })
+        // ->where('hari', $validatedData['hari'])
+        // ->where('isAktif', true) // Menambahkan kondisi isAktif true
+        // ->exists();
+
+
+        // if ($dokterSama) {
+        //     return back()->withErrors(['hari' => 'Tidak bisa menambahkan jadwal karena sudah ada dokter dengan poli yang sama pada hari tersebut.']);
+        // }
+
         JadwalPeriksa::create($validatedData);
 
         return redirect('/dashboard-dokter/jadwal-periksa')->with('success', 'Jadwal Telah Ditambahkan');
