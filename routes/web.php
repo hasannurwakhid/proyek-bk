@@ -42,6 +42,10 @@ Route::put('/dashboard-dokter/memeriksa-pasien/{periksa}/edit', [DashboardDokter
 Route::get('/dashboard-dokter/riwayat-pasien', [DashboardDokterController::class, 'riwayatPasien'])->middleware(Dokter::class);
 Route::get('/dashboard-dokter/riwayat-pasien/{periksa}', [DashboardDokterController::class, 'riwayatPasienDetail'])->middleware(Dokter::class);
 
+Route::get('/dashboard-dokter/konsultasi', [DashboardDokterController::class, 'konsultasi'])->middleware(Dokter::class);
+Route::get('/dashboard-dokter/konsultasi/{konsultasi}/edit', [DashboardDokterController::class, 'editKonsultasi'])->middleware(Dokter::class);
+Route::put('/dashboard-dokter/konsultasi/{konsultasi}', [DashboardDokterController::class, 'storeEditKonsultasi'])->middleware(Dokter::class);
+
 
 
 //======================pasien
@@ -58,6 +62,14 @@ Route::get('/getJadwalDokter/{poli}', [JadwalDokterController::class, 'getJadwal
 
 Route::get('/dashboard-pasien/riwayat-poli', [DashboardPasienController::class, 'riwayatPoli'])->middleware(Pasien::class);
 Route::get('/dashboard-pasien/riwayat-poli/{daftarPoli}', [DashboardPasienController::class, 'detailRiwayatPoli'])->middleware(Pasien::class);
+
+Route::get('/dashboard-pasien/konsultasi', [DashboardPasienController::class, 'konsultasi'])->middleware(Pasien::class);
+
+Route::get('/konsultasi', [DashboardPasienController::class, 'addKonsultasi'])->middleware(Pasien::class);
+Route::post('/konsultasi', [DashboardPasienController::class, 'storeAddKonsultasi'])->middleware(Pasien::class);
+Route::delete('/konsultasi/{konsultasi}', [DashboardPasienController::class, 'deleteKonsultasi'])->middleware(Pasien::class);
+Route::get('/konsultasi/{konsultasi}/edit', [DashboardPasienController::class, 'editKonsultasi'])->middleware(Pasien::class);
+Route::put('/konsultasi/{konsultasi}', [DashboardPasienController::class, 'storeEditKonsultasi'])->middleware(Pasien::class);
 
 
 //======================admin

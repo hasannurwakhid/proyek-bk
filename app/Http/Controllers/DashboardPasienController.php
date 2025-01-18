@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\DaftarPoli;
+use App\Models\Dokter;
 use App\Models\JadwalPeriksa;
+use App\Models\Konsultasi;
 use App\Models\Poli;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,5 +57,58 @@ class DashboardPasienController extends Controller
         return view('pasien.riwayatPoli.detailRiwayatPoli', [
             'daftarPoli'=>$daftarPoli
         ]);
+    }
+
+    public function konsultasi(){
+
+        $konsultasis = Konsultasi::where('id_pasien', Auth::user()->pasien->id)->get();
+        return view('pasien.konsultasi.index', [
+            'konsultasis'=>$konsultasis
+        ]);
+    }
+
+    public function addKonsultasi(){
+        $dokters = Dokter::all();
+        return view('pasien.konsultasi.addKonsultasi', [
+            'dokters'=>$dokters
+        ]);
+    }
+
+    public function storeAddKonsultasi(Request $request){
+        $validatedData = $request -> validate([
+            'id_dokter' => 'required',
+            'subject' => 'required|max:255',
+            'pertanyaan' => 'required|max:255',
+        ]);
+        
+        $validatedData['id_pasien'] = Auth::user()->pasien->id;
+        
+        Konsultasi::create($validatedData);
+        return redirect('/dashboard-pasien/konsultasi')->with('success', 'Konsultasi  telah diajukan');
+        
+    }
+    public function deleteKonsultasi(Konsultasi $konsultasi)
+    {
+        Konsultasi::destroy($konsultasi->id);
+        return redirect('/dashboard-pasien/konsultasi')->with('success', 'Konsultasi telah dihapus');
+    }
+
+    public function editKonsultasi(Konsultasi $konsultasi)
+    {
+        return view('pasien.konsultasi.editKonsultasi', [
+            'konsultasi'=>$konsultasi
+        ]);
+    }
+
+    public function storeEditKonsultasi(Request $request, Konsultasi $konsultasi)
+    {
+        $validatedData = $request -> validate([
+            'subject' => 'required|max:255',
+            'pertanyaan' => 'required|max:255',
+        ]);
+
+        Konsultasi::where('id', $konsultasi->id)->update($validatedData);
+        return redirect('/dashboard-pasien/konsultasi')->with('success', 'Konsultasi berhasil diubah');
+        
     }
 }

@@ -6,6 +6,7 @@ use App\Models\DaftarPoli;
 use App\Models\DetailPeriksa;
 use App\Models\Dokter;
 use App\Models\JadwalPeriksa;
+use App\Models\Konsultasi;
 use App\Models\Obat;
 use App\Models\Periksa;
 use App\Models\Poli;
@@ -263,5 +264,28 @@ class DashboardDokterController extends Controller
         return view('dokter.riwayatPasien.riwayatPasienDetail', [
             'riwayatPasien' => $periksa,
         ]);
+    }
+    public function konsultasi()
+    {
+        $konsultasis = Konsultasi::where('id_dokter', Auth::user()->dokter->id)->get();
+
+        return view('dokter.konsultasi.index', [
+            'konsultasis' => $konsultasis,
+        ]);
+    }
+    public function editKonsultasi(Konsultasi $konsultasi)
+    {
+        return view('dokter.konsultasi.editKonsultasi', [
+            'konsultasi' => $konsultasi,
+        ]);
+    }
+    public function storeEditKonsultasi(Request $request, Konsultasi $konsultasi)
+    {
+        $validatedData = $request -> validate([
+            'jawaban' => 'max:255',
+        ]);
+
+        Konsultasi::where('id', $konsultasi->id)->update($validatedData);
+        return redirect('/dashboard-dokter/konsultasi')->with('success', 'Konsultasi berhasil diubah');
     }
 }
